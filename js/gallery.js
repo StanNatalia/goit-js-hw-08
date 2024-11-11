@@ -69,8 +69,8 @@ const gallery = document.querySelector(".gallery");
 const galleryMarkup = images.map(({ preview, original, description }) => {
 return `
 <li class="gallery-item">
-  <a class="gallery-link" href=${original}>
-    <img class="gallery-image" src=${preview} data-source=${original} alt=${description}/>
+  <a class="gallery-link" href="${original}">
+    <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}"/>
   </a>
 </li>
 `;
@@ -84,6 +84,8 @@ gallery.addEventListener('click', function(event) {
     const link = event.target.closest('.gallery-link');
     if (!link) return;
 
+    const imgElement = link.querySelector('.gallery-image');
+
     const instance = basicLightbox.create(`
         <img src="${imgElement.dataset.source}" alt="${imgElement.alt}">
         `);
@@ -91,9 +93,3 @@ gallery.addEventListener('click', function(event) {
 
 });
 
-
-
-
-  
-
-  
