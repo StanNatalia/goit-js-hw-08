@@ -64,13 +64,17 @@ const images = [
     },
   ];
 
-
 const gallery = document.querySelector(".gallery");
 const galleryMarkup = images.map(({ preview, original, description }) => {
-return `
-<li class="gallery-item">
+    return `
+    <li class="gallery-item">
   <a class="gallery-link" href="${original}">
-    <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}"/>
+    <img
+      class="gallery-image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
   </a>
 </li>
 `;
@@ -78,18 +82,42 @@ return `
 
 gallery.innerHTML = galleryMarkup;
 
-gallery.addEventListener('click', function(event) {
+gallery.addEventListener("click", function(event) {
     event.preventDefault();
-
-    const link = event.target.closest('.gallery-link');
-    if (!link) return;
-
-    const imgElement = link.querySelector('.gallery-image');
-
-    const instance = basicLightbox.create(`
-        <img src="${imgElement.dataset.source}" alt="${imgElement.alt}">
-        `);
-    instance.show();
-
+    const link = event.target.closest(".gallery-link");
+    if (!link) {
+     return;
+    }
 });
+
+
+
+
+// const gallery = document.querySelector(".gallery");
+// const galleryMarkup = images.map(({ preview, original, description }) => {
+// return `
+// <li class="gallery-item">
+//   <a class="gallery-link" href="${original}">
+//     <img class="gallery-image" src="${preview}" data-source="${original}" alt="${description}"/>
+//   </a>
+// </li>
+// `;
+// }).join('');
+
+// gallery.innerHTML = galleryMarkup;
+
+// gallery.addEventListener('click', function(event) {
+//     event.preventDefault();
+
+//     const link = event.target.closest('.gallery-link');
+//     if (!link) return;
+
+//     const imgElement = link.querySelector('.gallery-image');
+
+//     const instance = basicLightbox.create(`
+//         <img src="${imgElement.dataset.source}" alt="${imgElement.alt}">
+//         `);
+//     instance.show();
+
+// });
 
